@@ -1,37 +1,39 @@
 {
-  "name": "zkpjwt-monorepo",
+  "name": "zk-doctor-monorepo",
   "version": "1.0.0",
-  "description": "Zero-Knowledge Proof JSON Web Token Protocol - Monorepo",
+  "description": "ZK Doctor - Privacy-preserving medical records on Arkiv",
   "private": true,
-  "workspaces": [
-    "library",
-    "demo"
-  ],
   "scripts": {
-    "build": "npm run build:library",
-    "build:library": "cd library && npm run build",
-    "build:demo": "cd demo && npm run build",
-    "dev:demo": "cd demo && npm run dev",
-    "test": "cd library && npm test",
-    "examples": "cd library && npm run build && node dist/examples.js"
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm start",
+    "dev:frontend": "cd frontend && npm run dev",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install && cd ../library && npm install",
+    "test": "cd frontend && npm run test",
+    "test:ui": "cd frontend && npm run test:ui",
+    "build": "cd frontend && npm run build",
+    "build:backend": "echo 'Backend does not require build'",
+    "build:frontend": "cd frontend && npm run build"
   },
   "keywords": [
     "zkp",
-    "jwt",
-    "zero-knowledge",
+    "arkiv",
     "privacy",
-    "arbitrum",
+    "medical-records",
+    "encryption",
     "blockchain",
-    "cryptography"
+    "polkadot"
   ],
   "author": "DevCristobalvc",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/DevCristobalvc/zkp-jwt.git"
+    "url": "https://github.com/DevCristobalvc/zk-doctor.git"
   },
   "bugs": {
-    "url": "https://github.com/DevCristobalvc/zkp-jwt/issues"
+    "url": "https://github.com/DevCristobalvc/zk-doctor/issues"
   },
-  "homepage": "https://github.com/DevCristobalvc/zkp-jwt#readme"
+  "homepage": "https://github.com/DevCristobalvc/zk-doctor#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
 }
